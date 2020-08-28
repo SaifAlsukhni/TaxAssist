@@ -1,4 +1,3 @@
-# neiu-cs-412
 ## Project Topic Proposal
 
 ### Application Name
