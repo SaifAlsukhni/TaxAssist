@@ -1,7 +1,7 @@
 ## Project Topic Proposal
 
 ### Application Name
-Tax Assist
+TaxAssist
 
 ### Project Topic/Objective
 The purpose of this web application would be to provide small business owners a way to provide sales tax data to their accountant.  They would be able to submit their monthly total receipts and deductions so their accountant can prepare the return and send it to the state.  Users will create a login and provide information for their company and or business.  The user will then be able to submit their monthly tax data via a simple form.  From there, an accountant will take that information and complete their return.  The accountant will be to provide status updates on the return.  Users will have access to the completed returns for bookkeeping purposes and possibly way a to pay for the service.
