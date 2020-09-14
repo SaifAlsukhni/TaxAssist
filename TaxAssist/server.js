@@ -1,8 +1,6 @@
 const http = require('http')
 const fs = require('fs')
 const path = require('path')
-const welcome = require('./public/js/welcome')
-
 
 let app = http.createServer((request, response) => {
     console.log('Request starting...', request.url)
