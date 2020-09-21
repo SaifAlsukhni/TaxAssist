@@ -6,7 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf8abfcb-31b1-41b8-a661-a5dc3f4ab831" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/neiu-cs-412.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/neiu-cs-412.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/public/js/lib/module.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/public/js/lib/module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/public/js/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/public/js/welcome.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1gyMnLGceONaepp1xACP3BbXng0" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -52,6 +57,9 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.server.js">
+    <configuration name="Lecture 4 (JSON Strings and Objects).js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$USER_HOME$/Google Drive/CS412/Class Code/Lecture 4 (JSON Strings and Objects).js" working-dir="$USER_HOME$/Google Drive/CS412/Class Code">
+      <method v="2" />
+    </configuration>
     <configuration name="deductions.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/TaxAssist/public/js/deductions.js" working-dir="$PROJECT_DIR$/TaxAssist/public/js">
       <method v="2" />
     </configuration>
@@ -61,9 +69,14 @@
     <configuration name="server.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/TaxAssist/server.js" working-dir="$PROJECT_DIR$/TaxAssist">
       <method v="2" />
     </configuration>
+    <configuration name="test.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$USER_HOME$/Downloads/test/public/test.js" working-dir="$USER_HOME$/Downloads/test/public">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.server.js" />
+        <item itemvalue="Node.js.Lecture 4 (JSON Strings and Objects).js" />
+        <item itemvalue="Node.js.test.js" />
         <item itemvalue="Node.js.server.js (1)" />
         <item itemvalue="Node.js.deductions.js" />
       </list>
@@ -86,6 +99,14 @@
       <workItem from="1600154720547" duration="23000" />
       <workItem from="1600155973738" duration="17000" />
       <workItem from="1600213092912" duration="30000" />
+      <workItem from="1600213483654" duration="344000" />
+      <workItem from="1600215475520" duration="419000" />
+      <workItem from="1600216748216" duration="473000" />
+      <workItem from="1600217344713" duration="856000" />
+      <workItem from="1600294240547" duration="3187000" />
+      <workItem from="1600299202988" duration="161000" />
+      <workItem from="1600299902167" duration="86000" />
+      <workItem from="1600661206674" duration="2626000" />
     </task>
     <servers />
   </component>
@@ -139,26 +160,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1600036612096" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600062401189">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1600298820213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600062401189" />
-    <state width="1515" height="130" key="GridCell.Tab.0.bottom" timestamp="1600213122017">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1600298820213" />
+    <state width="1515" height="194" key="GridCell.Tab.0.bottom" timestamp="1600663838503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="130" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600213122017" />
-    <state width="1515" height="130" key="GridCell.Tab.0.center" timestamp="1600213122017">
+    <state width="1515" height="194" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1600663838503" />
+    <state width="1515" height="194" key="GridCell.Tab.0.center" timestamp="1600663838503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="130" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600213122017" />
-    <state width="1515" height="130" key="GridCell.Tab.0.left" timestamp="1600213122017">
+    <state width="1515" height="194" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1600663838503" />
+    <state width="1515" height="194" key="GridCell.Tab.0.left" timestamp="1600663838503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="130" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600213122017" />
-    <state width="1515" height="130" key="GridCell.Tab.0.right" timestamp="1600213122017">
+    <state width="1515" height="194" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1600663838503" />
+    <state width="1515" height="194" key="GridCell.Tab.0.right" timestamp="1600663838503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="130" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600213122017" />
+    <state width="1515" height="194" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1600663838503" />
     <state x="0" y="60" key="SettingsEditor" timestamp="1600036232545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
