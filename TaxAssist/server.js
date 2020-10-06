@@ -1,31 +1,26 @@
 const http = require('http')
 const fs = require('fs')
-const path = require('path')
+const mime = require('mime-types')
+
+const routeMap = {
+    '/': './public/views/index.html',
+    '/about': './public/views/about.html'
+}
 
 let app = http.createServer((request, response) => {
     console.log('Request starting...', request.url)
 
-    let filePath = '.' + request.url
-    if (filePath === './')
-        filePath = './public/views/index.html'
+    let route = routeMap[request.url]
+    if(!route)
+        route = '.' + request.url
 
-    // Checks for the filePath extension and creates a variable for the Content type
-    let extname = String(path.extname(filePath))
-    let fileType = {
-        '.html': 'text/html',
-        '.css': 'text/css',
-        '.js': 'text/js',
-        '.png': 'image/png'
-    }
-    let contentType = fileType[extname]
-
-    // If-statement that checks for the file existing
-    if (fs.existsSync('./public/views/index.html')) {
-        fs.readFile(filePath, function (error, content) {
+    if (fs.existsSync(route)) {
+        fs.readFile(route, function (error, content) {
             if (error) {
                 response.writeHead(500)
                 response.end()
             } else {
+                let contentType = mime.lookup(route)
                 response.writeHead(200, {'Content-Type': contentType})
                 response.end(content, 'utf-8')
             }
@@ -33,7 +28,7 @@ let app = http.createServer((request, response) => {
         })
     } else {
         response.writeHead(404)
-        response.end()
+        response.end('404: Page Not Found')
     }
 })
 app.listen(3000)
