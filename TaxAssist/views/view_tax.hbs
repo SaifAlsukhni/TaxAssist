@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<img src="/images/logo.png" alt="Application Logo" class="center">
+
+{{> header }}
+
+<h3>Business Name: {{ taxTitle }}</h3>
+<p>Receipts, Deductions: {{ taxBody }}</p>
+<p>Key: {{ taxKey }}</p>
+<br/>
+<p>
+    <span><a href="/taxes/edit?key={{ taxKey }}">Edit this Tax Return</a></span> |
+    <span><a href="/taxes/destroy?key={{ taxKey }}">Delete this Tax Return</a></span>
+</p>

@@ -5,8 +5,13 @@ const cookieParser = require('cookie-parser')
 const http = require('http')
 const hbs = require('express-handlebars')
 
+const InMemoryTaxesStore = require('./models/taxes-memory').InMemoryTaxesStore
+let taxesStore = new InMemoryTaxesStore()
+exports.taxesStore = taxesStore
+
 const appsupport = require('./appsupport')
 const indexRouter = require('./routes/index')
+const taxesRouter = require('./routes/taxes')
 
 const app = express()
 exports.app = app
@@ -29,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //Router function lists
 app.use('/', indexRouter)
+app.use('/taxes', taxesRouter)
 
 //Error handlers
 app.use(appsupport.basicErrorHandler)

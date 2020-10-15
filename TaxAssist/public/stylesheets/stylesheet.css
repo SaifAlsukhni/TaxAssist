@@ -12,7 +12,35 @@ img.center {
 
 div {
     color: #103154;
-    font-size: 18px;
+    font-size: 15px;
+    text-align: center;
+}
+
+p  {
     font-weight: bold;
     text-align: center;
+}
+
+h3  {
+    font-weight: bold;
+    text-align: center;
+}
+
+h4  {
+    color: #103154;
+    font-weight: bold;
+    text-align: center;
+}
+
+ul {
+    text-align: center;
+    list-style-position: inside;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+
+span {
+    font-size: 12px;
 }
