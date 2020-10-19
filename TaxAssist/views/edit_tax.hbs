@@ -1,11 +1,11 @@
-<h1>{{title}}</h1>
+<h1>{{ title }}</h1>
 <img src="/images/logo.png" alt="Application Logo" class="center">
 
 {{> header }}
 
 <form method="post" action="/taxes/save">
     <input type="hidden" name="saveMethod"
-           value="{{#if isCreate}}create{{else}}update{{/if}}"/>
+           value="{{# if isCreate }}create{{ else }}update{{/ if }}"/>
     <p>
         Key: {{ taxKey }}
         <input type="hidden" name="taxKey" value="{{ taxKey }}"/>
