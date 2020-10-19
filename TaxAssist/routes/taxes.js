@@ -62,40 +62,10 @@ router.get('/edit', async (req, res, next) => {
     }
 })
 
-router.get('/edit_tax_menu', async (req, res, next) => {
-    try {
-        let keyList =  await taxesStore.keyList()
-        let keyPromises = keyList.map(key => {
-            return taxesStore.read(key)
-        })
-        let allTaxes = await  Promise.all(keyPromises)
-        res.render('edit_tax_menu', { title: 'Edit Taxes', taxList: extractTaxesToLiteral(allTaxes),
-            layout: 'layout',
-            styles: ['/stylesheets/stylesheet.css', '/stylesheets/style.css']})
-    } catch (err) {
-        next(err)
-    }
-})
-
 router.get('/destroy', async (req, res, next) => {
     try {
         let note = await taxesStore.destroy(req.query.key)
         res.redirect('/taxes/all')
-    } catch (err) {
-        next(err)
-    }
-})
-
-router.get('/destroy_tax', async function(req, res, next) {
-    try {
-        let keyList =  await taxesStore.keyList()
-        let keyPromises = keyList.map(key => {
-            return taxesStore.read(key)
-        })
-        let allTaxes = await  Promise.all(keyPromises)
-        res.render('destroy_tax', { title: 'Delete Taxes', taxList: extractTaxesToLiteral(allTaxes),
-            layout: 'layout',
-            styles: ['/stylesheets/stylesheet.css', '/stylesheets/style.css']})
     } catch (err) {
         next(err)
     }
