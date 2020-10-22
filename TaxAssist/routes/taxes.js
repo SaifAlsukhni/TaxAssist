@@ -9,7 +9,7 @@ router.get('/add', async (req, res, next) => {
             title: 'Add Tax Info',
             taxKey: await taxesStore.count(),
             layout: 'layout',
-            styles: ['/stylesheets/stylesheet.css', '/stylesheets/style.css']
+            styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
         })
     } catch (err) {
         next(err)
@@ -38,7 +38,7 @@ router.get('/view', async (req, res, next) => {
             taxKey: tax.key,
             taxBody: tax.body,
             layout: 'layout',
-            styles: ['/stylesheets/stylesheet.css', '/stylesheets/style.css']
+            styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
         })
     } catch (err) {
         next(err)
@@ -55,7 +55,7 @@ router.get('/edit', async (req, res, next) => {
             taxKey: tax.key,
             taxBody: tax.body,
             layout: 'layout',
-            styles: ['/stylesheets/stylesheet.css', '/stylesheets/style.css']
+            styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
         })
     } catch (err) {
         next(err)
@@ -80,7 +80,7 @@ router.get('/all', async function(req, res, next) {
         let allTaxes = await  Promise.all(keyPromises)
         res.render('view_all', { title: 'View All Taxes', taxList: extractTaxesToLiteral(allTaxes),
             layout: 'layout',
-            styles: ['/stylesheets/stylesheet.css', '/stylesheets/style.css']})
+            styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
     } catch (err) {
         next(err)
     }
