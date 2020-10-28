@@ -6,14 +6,15 @@ exports.InMemoryTaxesStore = class InMemoryTaxesStore extends AbstractTaxesStore
 
     async close() { }
 
-    async update(key, title, body) {
+    async update(key, title, body, body2) {
         taxes[key].title = title
         taxes[key].body = body
+        taxes[key].body2 = body2
         return taxes[key]
     }
 
-    async create(key, title, body) {
-        taxes[key] = new Tax(key, title, body)
+    async create(key, title, body, body2) {
+        taxes[key] = new Tax(key, title, body, body2)
         return taxes[key]
     }
 

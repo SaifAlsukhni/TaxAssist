@@ -2,6 +2,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+html body {
+  background-color: #B6D2F1;
+
+}
+
 a {
   color: dodgerblue;
 }
@@ -15,4 +20,3 @@ h1 {
 .navbar-text {
   font-size: x-large;
 }
-

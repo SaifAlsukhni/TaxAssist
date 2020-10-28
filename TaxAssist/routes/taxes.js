@@ -20,9 +20,9 @@ router.post('/save', async (req, res, next) => {
     try {
         let tax;
         if(req.body.saveMethod === 'create')
-            tax = await taxesStore.create(req.body.taxKey, req.body.title, req.body.body)
+            tax = await taxesStore.create(req.body.taxKey, req.body.title, req.body.body, req.body.body2)
         else
-            tax = await taxesStore.update(req.body.taxKey, req.body.title, req.body.body)
+            tax = await taxesStore.update(req.body.taxKey, req.body.title, req.body.body, req.body.body2)
         res.redirect('/taxes/view?key=' + req.body.taxKey)
     } catch (err) {
         next(err)
@@ -37,6 +37,7 @@ router.get('/view', async (req, res, next) => {
             taxTitle: tax.title,
             taxKey: tax.key,
             taxBody: tax.body,
+            taxBody2: tax.body2,
             layout: 'layout',
             styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
         })
@@ -54,6 +55,7 @@ router.get('/edit', async (req, res, next) => {
             taxTitle: tax.title,
             taxKey: tax.key,
             taxBody: tax.body,
+            taxBody2: tax.body2,
             layout: 'layout',
             styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
         })
