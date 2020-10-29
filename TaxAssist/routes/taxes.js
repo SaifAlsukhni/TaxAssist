@@ -66,7 +66,7 @@ router.get('/edit', async (req, res, next) => {
 
 router.get('/destroy', async (req, res, next) => {
     try {
-        let note = await taxesStore.destroy(req.query.key)
+        let tax = await taxesStore.destroy(req.query.key)
         res.redirect('/taxes/all')
     } catch (err) {
         next(err)
@@ -75,26 +75,15 @@ router.get('/destroy', async (req, res, next) => {
 
 router.get('/all', async function(req, res, next) {
     try {
-        let keyList =  await taxesStore.keyList()
-        let keyPromises = keyList.map(key => {
-            return taxesStore.read(key)
-        })
-        let allTaxes = await  Promise.all(keyPromises)
-        res.render('view_all', { title: 'View All Taxes', taxList: extractTaxesToLiteral(allTaxes),
+        let allTaxes = await taxesStore.findAllTaxes()
+        res.render('view_all', {
+            title: 'View All Taxes',
+            taxList: allTaxes,
             layout: 'layout',
             styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
     } catch (err) {
         next(err)
     }
 })
-
-function extractTaxesToLiteral(allTaxes) {
-    return allTaxes.map(tax => {
-        return {
-            key: tax.key,
-            title: tax.title
-        }
-    })
-}
 
 module.exports = router;

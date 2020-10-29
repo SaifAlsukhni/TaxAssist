@@ -5,8 +5,8 @@ const cookieParser = require('cookie-parser')
 const http = require('http')
 const hbs = require('express-handlebars')
 
-const InMemoryTaxesStore = require('./models/taxes-memory').InMemoryTaxesStore
-let taxesStore = new InMemoryTaxesStore()
+const MongooseTaxesStore = require('./models/taxes-mongoose').MongooseTaxesStore
+let taxesStore = new MongooseTaxesStore()
 exports.taxesStore = taxesStore
 
 const appsupport = require('./appsupport')
