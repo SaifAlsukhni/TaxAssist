@@ -1,10 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-html body {
-  background-color: #B6D2F1;
-
+  background-color: #B6D2F1 !important;
 }
 
 a {
@@ -19,4 +15,7 @@ h1 {
 
 .navbar-text {
   font-size: x-large;
+}
+.modal-content {
+  background-color: #B6D2F1 !important;
 }
