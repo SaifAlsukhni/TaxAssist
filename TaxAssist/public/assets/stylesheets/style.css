@@ -1,6 +1,6 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #B6D2F1 !important;
+  font: 14px "Montserrat", Helvetica, Arial, sans-serif;
+  background-color: #184A7F !important;
 }
 
 a {
@@ -17,5 +17,10 @@ h1 {
   font-size: x-large;
 }
 .modal-content {
-  background-color: #B6D2F1 !important;
+  background-color: #103154 !important;
+}
+
+span.navbar-text{
+  color: #f8f8ff !important;
+  font-size: 20px;
 }

@@ -1,5 +1,5 @@
 h1 {
-    color: #103154;
+    color: #f8f8ff;
     margin-left: 24px;
     text-align: center;
 }
@@ -11,7 +11,7 @@ img.center {
 }
 
 div {
-    color: #103154;
+    color: #f8f8ff;
     font-size: 15px;
     text-align: center;
 }
@@ -27,7 +27,7 @@ h3  {
 }
 
 h4  {
-    color: #103154;
+    color: #f8f8ff;
     font-weight: bold;
     text-align: center;
 }
