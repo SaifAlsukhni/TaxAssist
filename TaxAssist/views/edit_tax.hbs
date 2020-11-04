@@ -5,32 +5,34 @@
         <input type="hidden" name="saveMethod"
                value="{{# if isCreate }}create{{ else }}update{{/ if }}"/>
         <div class="form-group row justify-content-center">
-            <label class="col-form-label col-3 text-right font-weight-bold" for="key">Key: </label>
-            <div class="col-9">
-                <label class="col-form-label" name="key">{{ taxKey }}</label>
-            </div>
+            <label class="col-form-label col-sm-1 text-left font-weight-bold" for="key">Key: </label>
+            <label class="col-form-label col-sm-5 text-left" name="key">{{ taxKey }}</label>
             <input type="hidden" name="taxKey" value="{{ taxKey }}"/>
+            <div class="col-sm-1"></div>
         </div>
 
         <div class="form-group row justify-content-center">
-            <label class="col-form-label col-3 text-right font-weight-bold" for="title">Business: </label>
-            <div class="col-9">
-                <input class="form-control" type="text" name="title" placeholder="Enter business name" value="{{ taxTitle }}"/><br/>
+            <label class="col-form-label col-sm-1 text-left font-weight-bold" for="title">Business: </label>
+            <div class="col-sm-5">
+                <input class="form-control" type="text" name="title" placeholder="Enter business name" value="{{ taxTitle }}"/>
             </div>
+            <div class="col-sm-1"></div>
         </div>
 
         <div class="form-group row justify-content-center">
-            <label class="col-form-label col-3 text-right font-weight-bold" for="body">Receipts: </label>
-            <div class="col-9">
+            <label class="col-form-label col-sm-1 text-left font-weight-bold" for="body">Receipts: </label>
+            <div class="col-sm-5">
                 <textarea class="form-control" rows=5 name="body" placeholder="Enter receipts">{{ taxBody }}</textarea>
             </div>
+            <div class="col-sm-1"></div>
         </div>
 
         <div class="form-group row justify-content-center">
-            <label class="col-form-label col-3 text-right font-weight-bold" for="body2">Deductions: </label>
-            <div class="col-9">
+            <label class="col-form-label col-sm-1 text-left font-weight-bold" for="body2">Deductions: </label>
+            <div class="col-sm-5">
                 <textarea class="form-control" rows=5 name="body2" placeholder="Enter deductions">{{ taxBody2 }}</textarea>
             </div>
+            <div class="col-sm-1"></div>
         </div>
 
         <div class="form-group row justify-content-center">
