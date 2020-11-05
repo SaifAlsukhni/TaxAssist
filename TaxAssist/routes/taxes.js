@@ -4,7 +4,7 @@ let taxesStore = require('../app').taxesStore
 
 router.get('/add', async (req, res, next) => {
     try {
-        res.render('add_tax', {
+        res.render('taxes/add_tax', {
             isCreate: true,
             title: 'Add Tax Info',
             taxKey: await taxesStore.count(),
@@ -32,7 +32,7 @@ router.post('/save', async (req, res, next) => {
 router.get('/view', async (req, res, next) => {
     try {
         let tax = await taxesStore.read(req.query.key)
-        res.render('view_tax', {
+        res.render('taxes/view_tax', {
             title: 'View Tax Info',
             taxTitle: tax.title,
             taxKey: tax.key,
@@ -49,7 +49,7 @@ router.get('/view', async (req, res, next) => {
 router.get('/edit', async (req, res, next) => {
     try {
         let tax = await taxesStore.read(req.query.key)
-        res.render('edit_tax', {
+        res.render('taxes/edit_tax', {
             isCreate: false,
             title: 'Edit Tax Info',
             taxTitle: tax.title,
@@ -76,7 +76,7 @@ router.get('/destroy', async (req, res, next) => {
 router.get('/all', async function(req, res, next) {
     try {
         let allTaxes = await taxesStore.findAllTaxes()
-        res.render('view_all', {
+        res.render('taxes/view_all', {
             title: 'View All Taxes',
             taxList: allTaxes,
             layout: 'layout',

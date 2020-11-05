@@ -1,10 +1,8 @@
 exports.AbstractTaxesStore = class AbstractTaxesStore {
-    async close() { }
     async update(key, title, body, body2) { }
     async create(key, title, body, body2) { }
     async read(key) { }
     async destroy(key) { }
-    async keyList() { }
     async count() { }
 }
 

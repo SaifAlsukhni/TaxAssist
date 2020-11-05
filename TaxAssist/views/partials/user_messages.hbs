@@ -1,0 +1,9 @@
+<div class="row justify-content-center my-2">
+    {{#if flashMessages}}
+        {{#if flashMessages.success}}
+            <span class="text-success"><strong>{{{ flashMessages.success }}}</strong></span>
+        {{else}}
+            <span class="text-danger"><strong>{{{ flashMessages.error }}}</strong></span>
+        {{/if}}
+    {{/if}}
+</div>

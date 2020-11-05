@@ -7,15 +7,20 @@
     "start-watch": "nodemon ./app.js"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "bootstrap": "^4.5.3",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
     "feather-icons": "^4.28.0",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "jquery": "^3.5.1",
+    "memorystore": "^1.6.4",
     "mongoose": "^5.10.11",
     "morgan": "~1.9.1",
     "popper.js": "^1.16.1"
