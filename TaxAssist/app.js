@@ -35,7 +35,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({
-  secret: 'my_password_is_secret',
+  secret: process.env.SESSIONS_SECRET,
   cookie: { maxAge: 86400000 },
   store: new MemoryStore({
     checkPeriod: 86400000

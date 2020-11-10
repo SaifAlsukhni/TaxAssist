@@ -23,7 +23,7 @@ const TaxSchema = new mongoose.Schema({
     },
     body2: {
         type: String,
-        required: [true, 'Deductions entry is required,']
+        required: [true, 'Exemptions entry is required,']
     }
 })
 
