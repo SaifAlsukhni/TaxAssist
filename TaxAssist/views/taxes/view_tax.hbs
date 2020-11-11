@@ -11,7 +11,7 @@
 
     <div class="form-group row justify-content-center">
         <a class="mt-3 btn btn-outline-light mb-1 mr-1"
-           href="/taxes/edit?key={{ taxKey }}"><i data-feather="edit"></i> Edit</a>
+           href="/taxes/edit?id={{ taxId }}"><i data-feather="edit"></i> Edit</a>
         <a class="mt-3 btn btn-outline-light mb-1 mr-1" data-toggle="modal" data-target="#DeleteConfirm"><i data-feather="trash-2"></i> Delete</a>
 
         <div class="modal fade" id="DeleteConfirm">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                        <a class="btn btn-outline-light" href="/taxes/destroy?key={{ taxKey }}">Delete</a>
+                        <a class="btn btn-outline-light" href="/taxes/destroy?id={{ taxId }}">Delete</a>
                     </div>
                 </div>
             </div>

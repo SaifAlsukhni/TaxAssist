@@ -1,19 +1,6 @@
 let User = require('../models/user').User
 const { body, validationResult} = require('express-validator')
 
-const mongoose = require('mongoose')
-const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.DB_URL,
-            { useNewUrlParser: true,
-                useUnifiedTopology: true,
-                useCreateIndex: true }
-        )
-    } catch (err) {
-        console.log(err)
-    }
-}
-
 exports.userController = {
     create: async (req, res, next) => {
         const errors = validationResult(req)
@@ -22,10 +9,8 @@ exports.userController = {
             res.redirect('/users/register')
         } else {
             try {
-                await connectDB()
                 let userParams = getUserParams(req.body)
                 let user = await User.create(userParams)
-                await mongoose.disconnect()
                 req.flash('success', `${user.fullName}'s created successfully`)
                 res.redirect('/')
             } catch (error) {
@@ -37,10 +22,8 @@ exports.userController = {
     },
 
     authenticate: async (req, res) => {
-        await connectDB()
         try {
             let user = await User.findOne({email: req.body.email})
-            await mongoose.disconnect()
             if (user && await user.passwordComparison(req.body.password)) {
                 req.flash('success', `${user.fullName} logged in successfully!`)
                 res.redirect('/')

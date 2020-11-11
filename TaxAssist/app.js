@@ -7,10 +7,20 @@ const hbs = require('express-handlebars')
 const session = require('express-session')
 const MemoryStore = require('memorystore')(session)
 const connectFlash = require('connect-flash')
+const mongoose = require('mongoose')
 
-const MongooseTaxesStore = require('./models/taxes-mongoose').MongooseTaxesStore
+/*const MongooseTaxesStore = require('./models/taxes-mongoose').MongooseTaxesStore
 let taxesStore = new MongooseTaxesStore()
-exports.taxesStore = taxesStore
+exports.taxesStore = taxesStore*/
+
+mongoose.connect(process.env.DB_URL, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          useCreateIndex: true
+      }
+  ).catch (err => {
+    console.log(err)
+})
 
 const appsupport = require('./appsupport')
 const indexRouter = require('./routes/index')
