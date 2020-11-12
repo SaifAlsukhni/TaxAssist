@@ -9,10 +9,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <span class="navbar-text col text-left">{{ title }}</span>
-            <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/users/login">Login</a>
-            <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/users/register">Register</a>
-            <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/taxes/all">View All</a>
-            <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/taxes/add">Add Tax Info</a>
+            {{#unless loggedIn}}
+                <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/users/login">Login</a>
+                <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/users/register">Register</a>
+            {{else}}
+                <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/taxes/all">View All</a>
+                <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/taxes/add">Add Tax Info</a>
+
+                <div class="dropdown">
+                    <a class="nav-item nav-link btn btn-outline-light dropdown-toggle col-auto m-1" data-toggle="dropdown">
+                        {{currentUser.fullName}}
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/users/account">View Account</a>
+                        <a class="nav-item nav-link btn btn-outline-light col-auto m-1" href="/users/logout">Log Out</a>
+                    </div>
+                </div>
+
+            {{/unless}}
         </div>
     </nav>
 </header>

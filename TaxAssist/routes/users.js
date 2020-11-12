@@ -26,4 +26,13 @@ router.post('/login', async (req, res, next) => {
     await userController.authenticate(req, res)
 })
 
+router.get('/logout', function(req, res){
+    req.logout()
+    res.redirect('/')
+})
+
+router.get('/account', async (req, res, next) => {
+    await userController.account(req, res, next)
+})
+
 module.exports = router

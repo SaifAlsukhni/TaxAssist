@@ -1,17 +1,21 @@
 const mongoose = require('mongoose')
 
 const TaxSchema = new mongoose.Schema({
-    title: {
+    business: {
         type: String,
-        required: [true, 'Business name is required,'],
+        required: [true, 'Business name is required'],
     },
-    body: {
+    receipts: {
         type: String,
-        required: [true, 'Receipts entry is required,']
+        required: [true, 'Receipts entry is required']
     },
-    body2: {
+    exemptions: {
         type: String,
-        required: [true, 'Exemptions entry is required,']
+        required: [true, 'Exemptions entry is required']
+    },
+    month: {
+        type: String,
+        required: [true, 'Month selection is required']
     }
 })
 

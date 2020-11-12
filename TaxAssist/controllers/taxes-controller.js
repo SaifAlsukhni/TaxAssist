@@ -1,24 +1,34 @@
-let Tax = require('../models/taxes').Tax
+let { Tax } = require('../models/taxes')
+let { User } = require('../models/user')
 
 exports.taxesController = {
     add: async (req, res, next) => {
-        try {
-            res.render('taxes/add_tax', {
-                isCreate: true,
-                title: 'Add Tax Info'
-            })
-        } catch (err) {
-            next(err)
+        if (req.isAuthenticated()) {
+            try {
+                res.render('taxes/add_tax', {
+                    isCreate: true,
+                    title: 'Add Tax Info',
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
+                })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
         }
     },
 
     save: async (req, res, next) => {
         try {
             let tax
-            if(req.body.saveMethod === 'create')
-                tax = await create(req.body.title, req.body.body, req.body.body2)
-            else
-                tax = await update(req.body.taxId, req.body.title, req.body.body, req.body.body2)
+            if(req.body.saveMethod === 'create') {
+                tax = await create(req.body.business, req.body.receipts, req.body.exemptions, req.body.month)
+                req.user.taxes.push(tax.id.trim())
+                req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes}, { new: true })
+            } else
+                tax = await update(req.body.taxId, req.body.business, req.body.receipts, req.body.exemptions, req.body.month)
             res.redirect(`/taxes/view?id=${tax.id}`)
         } catch (err) {
             next(err)
@@ -26,37 +36,49 @@ exports.taxesController = {
     },
 
     view: async (req, res, next) => {
-        try {
-            let tax = await Tax.findOne({ _id: req.query.id.trim()})
-            res.render('taxes/view_tax', {
-                title: 'View Tax Info',
-                taxId: req.query.id,
-                taxTitle: tax.title,
-                taxBody: tax.body,
-                taxBody2: tax.body2,
-                layout: 'layout',
-                styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
-            })
-        } catch (err) {
-            next(err)
+        if (req.isAuthenticated()) {
+            try {
+                let tax = await Tax.findOne({ _id: req.query.id.trim()})
+                res.render('taxes/view_tax', {
+                    title: 'View Tax Info',
+                    taxId: req.query.id,
+                    taxBusiness: tax.business,
+                    taxReceipts: tax.receipts,
+                    taxExemptions: tax.exemptions,
+                    taxMonth: tax.month,
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
+                })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
         }
     },
 
     edit: async (req, res, next) => {
-        try {
-            let tax = await Tax.findOne({ _id: req.query.id.trim()})
-            res.render('taxes/edit_tax', {
-                isCreate: false,
-                title: 'Edit Tax Info',
-                taxId: req.query.id,
-                taxTitle: tax.title,
-                taxBody: tax.body,
-                taxBody2: tax.body2,
-                layout: 'layout',
-                styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
-            })
-        } catch (err) {
-            next(err)
+        if (req.isAuthenticated()) {
+            try {
+                let tax = await Tax.findOne({ _id: req.query.id.trim()})
+                res.render('taxes/edit_tax', {
+                    isCreate: false,
+                    title: 'Edit Tax Info',
+                    taxId: req.query.id,
+                    taxBusiness: tax.business,
+                    taxReceipts: tax.receipts,
+                    taxExemptions: tax.exemptions,
+                    taxMonth: tax.month,
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
+                })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
         }
     },
 
@@ -70,38 +92,47 @@ exports.taxesController = {
     },
 
     all: async (req, res, next) => {
-        try {
-            let taxes = await Tax.find({})
-            let allTaxes = taxes.map(tax => {
-                return {
-                    id: tax.id,
-                    taxTitle: tax.title
-                }
-            })
-            res.render('taxes/view_all', {
-                title: 'View All Taxes',
-                taxList: allTaxes,
-                layout: 'layout',
-                styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
-        } catch (err) {
-            next(err)
+        if (req.isAuthenticated()) {
+            try {
+                let taxIds = req.user.taxes
+                let taxPromises = taxIds.map(id => Tax.findOne({ _id: id }))
+                let taxes = await Promise.all(taxPromises)
+                let allTaxes = taxes.map(tax => {
+                    return {
+                        id: tax.id,
+                        taxBusiness: tax.business,
+                        taxMonth: tax.month
+                    }
+                })
+                res.render('taxes/view_all', {
+                    title: 'View All Taxes',
+                    taxList: allTaxes,
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
         }
     }
 }
 
-create = async (title, body, body2) => {
+create = async (business, receipts, exemptions, month) => {
     let tax = new Tax({
-        title: title,
-        body: body,
-        body2: body2
+        business: business,
+        receipts: receipts,
+        exemptions: exemptions,
+        month: month
     })
     tax = await tax.save()
     return tax
 }
 
-update = async (id, title, body, body2) => {
+update = async (id, business, receipts, exemptions, month) => {
     id = id.trim()
-    let tax= await Tax.findByIdAndUpdate({ _id: id}, { title: title, body: body, body2: body2 }, { new: true } )
+    let tax= await Tax.findByIdAndUpdate({ _id: id}, { business: business, receipts: receipts, exemptions: exemptions, month: month }, { new: true } )
     return tax
 }
 

@@ -3,13 +3,7 @@ const router = express.Router();
 const {taxesController} = require("../controllers/taxes-controller");
 
 router.get('/add', async (req, res, next) => {
-    res.render('taxes/add_tax', {
-        isCreate: true,
-        title: 'Add Tax Info',
-        layout: 'layout',
-        styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
-    })
-
+    await taxesController.add(req, res, next)
 })
 
 router.post('/save', async (req, res, next) => {
@@ -28,10 +22,6 @@ router.get('/edit', taxesController.edit, async (req, res, next) => {
     res.render('taxes/edit_tax', {
         isCreate: false,
         title: 'Edit Tax Info',
-        taxId: req.query.id,
-        taxTitle: tax.title,
-        taxBody: tax.body,
-        taxBody2: tax.body2,
         layout: 'layout',
         styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
     })
@@ -46,7 +36,6 @@ router.get('/all', taxesController.all, async function(req, res, next) {
         title: 'View All Taxes',
         layout: 'layout',
         styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
-
 })
 
 module.exports = router;
