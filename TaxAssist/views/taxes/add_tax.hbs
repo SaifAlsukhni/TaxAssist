@@ -11,7 +11,7 @@
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-sm-1 text-left font-weight-bold" for="title">Business: </label>
             <div class="col-sm-5">
-                <input class="form-control" type="text" name="business" placeholder="Enter business name" value="{{ taxBusiness }}"/>
+                <input class="form-control" type="text" name="business" placeholder="Enter business name" value="{{ taxBusiness }}" required/>
             </div>
             <div class="col-sm-1"></div>
         </div>
@@ -19,7 +19,7 @@
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-sm-1 text-left font-weight-bold" for="body">Receipts: </label>
             <div class="col-sm-5">
-                <textarea class="form-control" rows=5 name="receipts" placeholder="Enter receipts"></textarea>
+                <textarea class="form-control" rows=5 name="receipts" placeholder="Enter receipts" required></textarea>
             </div>
             <div class="col-sm-1"></div>
         </div>
@@ -27,7 +27,7 @@
         <div class="form-group row justify-content-center">
             <label class="col-form-label col-sm-1 text-left font-weight-bold" for="body2">Exemptions: </label>
             <div class="col-sm-5">
-                <textarea class="form-control" rows=5 name="exemptions" placeholder="Enter all available exemptions"></textarea>
+                <textarea class="form-control" rows=5 name="exemptions" placeholder="Enter all available exemptions" required></textarea>
             </div>
             <div class="col-sm-1"></div>
         </div>

@@ -16,7 +16,7 @@ const UserSchema = new Schema({
     },
     phone: {
         type: Number,
-        required: [true, 'Phone number is required'],
+        required: [true, 'Phone number is required']
     },
     taxes: [
         {

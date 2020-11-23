@@ -13,7 +13,7 @@ exports.userController = {
                 let userParams = getUserParams(req.body)
                 let newUser = new User(userParams)
                 let user = await User.register(newUser, req.body.password)
-                req.flash('success', `Account created successfully. Welcome to TaxAssist, ${user.fullName}!`)
+                req.flash('success', `Account created successfully. <br>Welcome to TaxAssist, ${user.fullName}!`)
                 res.redirect('/')
             } catch (error) {
                 console.log(`Error saving user: ${error.message}`)

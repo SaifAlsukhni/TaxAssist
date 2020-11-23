@@ -10,32 +10,20 @@ router.post('/save', async (req, res, next) => {
     await taxesController.save(req, res, next)
 })
 
-router.get('/view', taxesController.view, async (req, res, next) => {
-    res.render('taxes/view_tax', {
-        title: 'View Tax Info',
-        layout: 'layout',
-        styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
-    })
+router.get('/view', async (req, res, next) => {
+    await taxesController.view(req, res, next)
 })
 
-router.get('/edit', taxesController.edit, async (req, res, next) => {
-    res.render('taxes/edit_tax', {
-        isCreate: false,
-        title: 'Edit Tax Info',
-        layout: 'layout',
-        styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
-    })
+router.get('/edit', async (req, res, next) => {
+    await taxesController.edit(req, res, next)
 })
 
-router.get('/destroy', taxesController.destroy, async (req, res, next) => {
-    res.redirect('/taxes/all')
+router.get('/destroy', async (req, res, next) => {
+    await taxesController.destroy(req, res, next)
 })
 
-router.get('/all', taxesController.all, async function(req, res, next) {
-    res.render('taxes/view_all', {
-        title: 'View All Taxes',
-        layout: 'layout',
-        styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
+router.get('/all', async function(req, res, next) {
+    await taxesController.all(req, res, next)
 })
 
 module.exports = router;

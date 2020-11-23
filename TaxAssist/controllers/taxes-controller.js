@@ -1,5 +1,6 @@
 let { Tax } = require('../models/taxes')
 let { User } = require('../models/user')
+const { body, validationResult} = require('express-validator')
 
 exports.taxesController = {
     add: async (req, res, next) => {
@@ -84,8 +85,16 @@ exports.taxesController = {
 
     destroy: async (req, res, next) => {
         try {
+
             let tax = await Tax.findByIdAndDelete({ _id: req.query.id.trim()})
+            req.user.taxes.remove(tax.id.trim())
+            req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes})
+
+            // Remove id from user: req.user.taxes.
+            // User => find by ID and update - just the taxes, not the whole user
+            // Update the user on the request
             res.redirect('/taxes/all')
+            return tax
         } catch (err) {
             next(err)
         }
@@ -132,8 +141,27 @@ create = async (business, receipts, exemptions, month) => {
 
 update = async (id, business, receipts, exemptions, month) => {
     id = id.trim()
-    let tax= await Tax.findByIdAndUpdate({ _id: id}, { business: business, receipts: receipts, exemptions: exemptions, month: month }, { new: true } )
+    let tax = await Tax.findByIdAndUpdate({ _id: id}, { business: business, receipts: receipts, exemptions: exemptions, month: month }, { new: true } )
     return tax
 }
 
+const getTaxParams = body => {
+    return {
+        business: body.business,
+        receipts: body.receipts,
+        exemptions: body.exemptions,
+        month: body.month
+    }
+}
 
+exports.taxValidations = [
+    body('business')
+        .notEmpty().withMessage('Business name is required')
+        .isLength({min: 4}).withMessage('Business name must be at least 4 characters long'),
+    body('receipts')
+        .notEmpty().withMessage('Receipts field is required'),
+    body('exemptions')
+        .notEmpty().withMessage('Exemptions field is required'),
+    body('month')
+        .notEmpty().withMessage('Month selection is required')
+]
