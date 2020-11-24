@@ -1,18 +1,20 @@
 <img src="/assets/images/logo.png" alt="Application Logo" class="img-fluid center">
 </br>
 <div class="container-fluid">
-    <div class="row row-cols-8 justify-content-center">
-        <h3>{{ userFirst }} {{ userLast }}</h3>
-    </div>
-    <div>
-        <p>First Name: {{ userFirst }}</p>
-        <p>Last Name: {{ userLast }}</p>
-        <p>Phone Number: {{ userPhone }}</p>
-        <p>Email: {{ userEmail }}</p>
-    </div>
+    <div class="card text-white mb-7 mx-auto" style="max-width: 25rem;">
+        <div class="card-header"><h3>{{ userFirst }} {{ userLast }}</h3></div>
+        <div class="card-body">
+            <p class="col-form-label text-left font-weight-bold">First Name: {{ userFirst }}</p>
+            <p class="col-form-label text-left font-weight-bold">Last Name: {{ userLast }}</p>
+            <p class="col-form-label text-left font-weight-bold">Phone Number: {{ userPhone }}</p>
+            <p class="col-form-label text-left font-weight-bold">Email: {{ userEmail }}</p>
 
-    <div class="form-group row justify-content-center">
-        <a class="mt-3 btn btn-outline-light mb-1 mr-1"
-           href="/users/_?id={{ userId }}"><i data-feather="edit"></i> Edit Account Information</a>
+            <div class="form-group row justify-content-center">
+                <a class="mt-3 btn btn-outline-light mb-1 mr-1"
+                   href="/users/changePassword?id={{ userId }}"><i data-feather="lock"></i> Change Password</a>
+                <a class="mt-3 btn btn-outline-light mb-1 mr-1"
+                   href="/users/editAccount?id={{ userId }}"><i data-feather="edit"></i> Edit Account</a>
+            </div>
+        </div>
     </div>
 </div>

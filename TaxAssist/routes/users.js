@@ -35,4 +35,20 @@ router.get('/account', async (req, res, next) => {
     await userController.account(req, res, next)
 })
 
+router.get('/editAccount', async (req, res, next) => {
+    await userController.editAccount(req, res, next)
+})
+
+router.post('/updateAccount', async (req, res, next) => {
+    await userController.updateAccount(req, res, next)
+})
+
+router.get('/changePassword', async (req, res, next) => {
+    await userController.changePasswordView(req, res, next)
+})
+
+router.post('/changePassword', async (req, res, next) => {
+    await userController.changePassword(req, res, next)
+})
+
 module.exports = router

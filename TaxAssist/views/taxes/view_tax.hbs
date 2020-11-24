@@ -1,32 +1,31 @@
 <img src="/assets/images/logo.png" alt="Application Logo" class="img-fluid center">
 </br>
 <div class="container-fluid">
-    <div class="row row-cols-8 justify-content-center">
-        <h3>{{ taxBusiness }}</h3>
-    </div>
-    <div>
-        <p>Receipts: {{ taxReceipts }}</p>
-        <p>Exemptions: {{ taxExemptions }}</p>
-        <p>Month: {{ taxMonth }}</p>
-    </div>
+    <div class="card text-white mb-7 mx-auto" style="max-width: 25rem;">
+        <div class="card-header"><h3>{{ taxBusiness }}</h3></div>
+            <div class="card-body">
+                <p class="col-form-label text-left font-weight-bold">Receipts: {{ taxReceipts }}</p>
+                <p class="col-form-label text-left font-weight-bold">Exemptions: {{ taxExemptions }}</p>
+                <p class="col-form-label text-left font-weight-bold">Month: {{ taxMonth }}</p>
+            </div>
+        <div class="form-group row justify-content-center">
+            <a class="mt-3 btn btn-outline-light mb-1 mr-1"
+               href="/taxes/edit?id={{ taxId }}"><i data-feather="edit"></i> Edit</a>
+            <a class="mt-3 btn btn-outline-light mb-1 mr-1" data-toggle="modal" data-target="#DeleteConfirm"><i data-feather="trash-2"></i> Delete</a>
 
-    <div class="form-group row justify-content-center">
-        <a class="mt-3 btn btn-outline-light mb-1 mr-1"
-           href="/taxes/edit?id={{ taxId }}"><i data-feather="edit"></i> Edit</a>
-        <a class="mt-3 btn btn-outline-light mb-1 mr-1" data-toggle="modal" data-target="#DeleteConfirm"><i data-feather="trash-2"></i> Delete</a>
-
-        <div class="modal fade" id="DeleteConfirm">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4>Delete Tax?</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h5>Are you sure you want to delete? This cannot be undone.</h5>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                        <a class="btn btn-outline-light" href="/taxes/destroy?id={{ taxId }}">Delete</a>
+            <div class="modal fade" id="DeleteConfirm">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Delete Tax?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Are you sure you want to delete? This cannot be undone.</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                            <a class="btn btn-outline-light" href="/taxes/destroy?id={{ taxId }}">Delete</a>
+                        </div>
                     </div>
                 </div>
             </div>

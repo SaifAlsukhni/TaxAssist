@@ -44,7 +44,7 @@ exports.userController = {
         if (req.isAuthenticated()) {
             try {
                 let user = await User.findOne({ _id: req.user.id.trim()})
-                res.render('users/Account', {
+                res.render('users/account', {
                     title: 'View Account',
                     userId: req.user.id,
                     userFirst: user.name.first,
@@ -54,6 +54,83 @@ exports.userController = {
                     layout: 'layout',
                     styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
                 })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
+        }
+    },
+
+    editAccount: async (req, res, next) => {
+        if (req.isAuthenticated()) {
+            try {
+                let user = await User.findOne({ _id: req.user.id.trim()})
+                res.render('users/edit_account', {
+                    title: 'Edit Account',
+                    userId: req.user.id,
+                    userFirst: user.name.first,
+                    userLast: user.name.last,
+                    userPhone: user.phone,
+                    userEmail: user.email,
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
+                })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
+        }
+    },
+
+    updateAccount: async (req, res, next) => {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            req.flash('error', errors.array().map(e => e.msg + '</br>').join(''))
+            res.redirect('/users/account')
+        } else {
+            try {
+                await User.update({ _id: req.query.id.trim()}, req.body.userFirst, req.body.userLast, req.body.userPhone)
+                await User.save()
+                req.flash('success', 'Account updated successfully.')
+                res.redirect('/users/account')
+            } catch (error) {
+                console.log(`Error saving user: ${error.message}`)
+                req.flash('error', 'That email already exists. Please use a different email.')
+                res.redirect('/users/account')
+            }
+        }
+    },
+
+    changePasswordView: async (req, res, next) => {
+        if (req.isAuthenticated()) {
+            try {
+                let user = await User.findOne({ _id: req.user.id.trim()})
+                res.render('users/change_password', {
+                    title: 'Change Password',
+                    userId: req.user.id,
+                    userFirst: user.password,
+                    userLast: user.newPassword,
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
+                })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
+        }
+    },
+
+    changePassword: async (req, res, next) => {
+        if (req.isAuthenticated()) {
+            try {
+                await User.findOne({ _id: req.user.id.trim()})
+                User.changePassword(req.body.password, req.body.newPassword)
             } catch (err) {
                 next(err)
             }

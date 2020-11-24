@@ -16,6 +16,7 @@ h1 {
 .navbar-text {
   font-size: x-large;
 }
+
 .modal-content {
   background-color: #103154 !important;
 }
@@ -26,5 +27,9 @@ span.navbar-text{
 }
 
 .dropdown-menu {
+  background-color: #103154 !important;
+}
+
+.card {
   background-color: #103154 !important;
 }
