@@ -1,0 +1,17 @@
+<img src="/assets/images/logo.png" alt="Application Logo" class="img-fluid center">
+
+<div class="container-fluid">
+    <div class="card text-white mx-auto pb-0 pt-2" style="max-width: 25rem">
+        <h4>Quick View Taxes</h4>
+    </div>
+    {{# each taxList }}
+    <div class="card text-white mx-auto m-2" style="max-width: 25rem">
+        <div class="card-header"><h5>{{ taxBusiness }} ({{ taxMonth }})</h5></div>
+        <div class="card-body">
+            <p class="col-form-label text-left font-weight-bold">Receipts: {{ taxReceipts }}</p>
+            <p class="col-form-label text-left font-weight-bold">Exemptions: {{ taxExemptions }}</p>
+            <p class="col-form-label text-left font-weight-bold">Month: {{ taxMonth }}</p>
+        </div>
+    </div>
+    {{/ each }}
+</div>

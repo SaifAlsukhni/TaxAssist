@@ -26,4 +26,12 @@ router.get('/all', async function(req, res, next) {
     await taxesController.all(req, res, next)
 })
 
+router.get('/calendar', async function(req, res, next) {
+    await taxesController.calendar(req, res, next)
+})
+
+router.get('/quick', async function(req, res, next) {
+    await taxesController.quick(req, res, next)
+})
+
 module.exports = router;

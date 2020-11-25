@@ -85,14 +85,9 @@ exports.taxesController = {
 
     destroy: async (req, res, next) => {
         try {
-
             let tax = await Tax.findByIdAndDelete({ _id: req.query.id.trim()})
             req.user.taxes.remove(tax.id.trim())
             req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes})
-
-            // Remove id from user: req.user.taxes.
-            // User => find by ID and update - just the taxes, not the whole user
-            // Update the user on the request
             res.redirect('/taxes/all')
             return tax
         } catch (err) {
@@ -125,7 +120,54 @@ exports.taxesController = {
             req.flash('error', 'You must log in to access this page.')
             res.redirect('/users/login')
         }
+    },
+
+    quick: async (req, res, next) => {
+        if (req.isAuthenticated()) {
+            try {
+                let taxIds = req.user.taxes
+                let taxPromises = taxIds.map(id => Tax.findOne({ _id: id }))
+                let taxes = await Promise.all(taxPromises)
+                let allTaxes = taxes.map(tax => {
+                    return {
+                        taxId: req.query.id,
+                        taxBusiness: tax.business,
+                        taxReceipts: tax.receipts,
+                        taxExemptions: tax.exemptions,
+                        taxMonth: tax.month
+                    }
+                })
+                res.render('taxes/quick_view', {
+                    title: 'Quick View Taxes',
+                    taxList: allTaxes,
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']})
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
+        }
+    },
+
+    calendar: async (req, res, next) => {
+        if (req.isAuthenticated()) {
+            try {
+                res.render('taxes/calendar', {
+                    title: 'Calendar',
+                    layout: 'layout',
+                    styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
+                })
+            } catch (err) {
+                next(err)
+            }
+        } else {
+            req.flash('error', 'You must log in to access this page.')
+            res.redirect('/users/login')
+        }
     }
+
 }
 
 create = async (business, receipts, exemptions, month) => {

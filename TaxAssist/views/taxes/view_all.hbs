@@ -1,14 +1,15 @@
 <img src="/assets/images/logo.png" alt="Application Logo" class="img-fluid center">
 
-<h4>Select Tax Return to View</h4>
-
 <div class="container-fluid">
-    <div class="row row-cols-8 justify-content-center">
-        <div class="col-md-3 btn-group-vertical" role="group">
-            {{# each taxList }}
-                <a class="my-1 btn btn-lg btn-block btn-outline-light"
-                   href="/taxes/view?id={{ id }}">{{ taxBusiness }} ({{ taxMonth }})</a>
-            {{/ each }}
+    <div class="card text-white mx-auto py-3 px-1" style="max-width: 25rem">
+        <h4>Select Tax Return to View</h4>
+        <div class="justify-content-center">
+            <div class="col-md-auto btn-group-justified" role="group">
+                {{# each taxList }}
+                    <a class="my-1 btn btn-lg btn-block btn-outline-light"
+                       href="/taxes/view?id={{ id }}">{{ taxBusiness }} ({{ taxMonth }})</a>
+                {{/ each }}
+            </div>
         </div>
     </div>
 </div>

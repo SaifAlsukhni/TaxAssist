@@ -2,6 +2,9 @@
 
 <form method="post" action="/taxes/save">
     <div class="container-fluid">
+        <div class="card text-white mx-auto pb-0 pt-2" style="max-width: 25rem">
+            <h4>{{ taxBusiness }}</h4>
+        </div>
         <input type="hidden" name="saveMethod"
                value="{{# if isCreate }}create{{ else }}update{{/ if }}"/>
         <div class="form-group row justify-content-center">
