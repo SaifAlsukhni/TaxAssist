@@ -7,6 +7,7 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel='stylesheet' href="/assets/vendor/bootstrap/css/bootstrap.min.css"/>
+    <link rel='stylesheet' href="/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css"/>
 
     {{# each styles }}
         <link rel='stylesheet' href={{ this }} />
@@ -24,4 +25,18 @@
 <script src="/assets/vendor/jquery/jquery.min.js"></script>
 <script src="/assets/vendor/popper.js/popper.min.js"></script>
 <script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="/assets/vendor/luxon/luxon.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({
+            format: "mm/yyyy",
+            minViewMode: 1,
+            maxViewMode: 2,
+            clearBtn: true,
+            autoclose: true
+        })
+    });
+</script>
 </html>

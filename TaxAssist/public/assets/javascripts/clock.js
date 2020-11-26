@@ -1,10 +1,12 @@
-let { DateTime } = require('luxon')
+const { DateTime } = require('luxon')
 
-let localTime = DateTime.local().toLocaleString(DateTime.DATETIME_HUGE)
-let dueDate = DateTime.local(2020, 12, 18, 23, 59).toLocaleString(DateTime.DATETIME_HUGE)
+let countdown = setInterval(function() {
+    let localTime = DateTime.local()
+    let dueDate = DateTime.local(2020, 12, 20, 23, 59)
+    document.getElementById("countdown").innerHTML = dueDate.diff(localTime).toFormat("d 'days, ' hh 'hours, ' mm 'minutes, and' ss 'seconds'")
 
-let localTime1 = DateTime.local()
-let dueDate1 = DateTime.local(2020, 10, 18, 23, 59)
-
-let timeLeft = dueDate1.diff(localTime1, ['days', 'hours', 'minutes', 'seconds']).toObject()
-JSON.stringify(timeLeft)
+    if (dueDate < 0) {
+        clearInterval(countdown)
+        document.getElementById("countdown").innerHTML = "Already Past Due"
+    }
+}, 1000)
