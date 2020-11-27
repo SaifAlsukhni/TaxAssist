@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {taxesController} = require("../controllers/taxes-controller");
+const { taxValidations, taxesController } = require("../controllers/taxes-controller");
 
 router.get('/add', async (req, res, next) => {
     await taxesController.add(req, res, next)
 })
 
-router.post('/save', async (req, res, next) => {
+router.post('/save', taxValidations, async (req, res, next) => {
     await taxesController.save(req, res, next)
 })
 

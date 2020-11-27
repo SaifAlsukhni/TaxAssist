@@ -22,17 +22,26 @@ exports.taxesController = {
     },
 
     save: async (req, res, next) => {
-        try {
-            let tax
-            if(req.body.saveMethod === 'create') {
-                tax = await create(req.body.business, req.body.receipts, req.body.exemptions, req.body.month)
-                req.user.taxes.push(tax.id.trim())
-                req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes}, { new: true })
-            } else
-                tax = await update(req.body.taxId, req.body.business, req.body.receipts, req.body.exemptions, req.body.month)
-            res.redirect(`/taxes/view?id=${tax.id}`)
-        } catch (err) {
-            next(err)
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            req.flash('error', errors.array().map(e => e.msg + '</br>').join(''))
+            res.redirect('back')
+        } else {
+            try {
+                let tax
+                if(req.body.saveMethod === 'create') {
+                    tax = await create(req.body.business, req.body.receipts, req.body.exemptions, req.body.month)
+                    req.user.taxes.push(tax.id.trim())
+                    req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes}, { new: true })
+                    req.flash('success', `Taxes for ${tax.business} (${tax.month}) saved successfully.`)
+                    res.redirect(`/taxes/view?id=${tax.id}`)
+                } else
+                    tax = await update(req.body.taxId, req.body.business, req.body.receipts, req.body.exemptions, req.body.month)
+                    req.flash('success', `Taxes for ${tax.business} (${tax.month}) saved successfully.`)
+                    res.redirect(`/taxes/view?id=${tax.id}`)
+            } catch (err) {
+                next(err)
+            }
         }
     },
 
@@ -84,14 +93,21 @@ exports.taxesController = {
     },
 
     destroy: async (req, res, next) => {
-        try {
-            let tax = await Tax.findByIdAndDelete({ _id: req.query.id.trim()})
-            req.user.taxes.remove(tax.id.trim())
-            req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes})
-            res.redirect('/taxes/all')
-            return tax
-        } catch (err) {
-            next(err)
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            req.flash('error', errors.array().map(e => e.msg + '</br>').join(''))
+            res.redirect(`/taxes/view?id=${tax.id}`)
+        } else {
+            try {
+                let tax = await Tax.findByIdAndDelete({ _id: req.query.id.trim()})
+                req.user.taxes.remove(tax.id.trim())
+                req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, { taxes: req.user.taxes})
+                req.flash('success', `Taxes for ${tax.business} (${tax.month}) deleted successfully.`)
+                res.redirect('/taxes/all')
+                return tax
+            } catch (err) {
+                next(err)
+            }
         }
     },
 
