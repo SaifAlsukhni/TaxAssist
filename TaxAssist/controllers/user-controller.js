@@ -63,7 +63,7 @@ exports.userController = {
         }
     },
 
-    editAccount: async (req, res, next) => {
+    editAccountView: async (req, res, next) => {
         if (req.isAuthenticated()) {
             try {
                 let user = await User.findOne({ _id: req.user.id.trim()})
@@ -86,20 +86,24 @@ exports.userController = {
         }
     },
 
-    updateAccount: async (req, res, next) => {
+    editAccount: async (req, res, next) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             req.flash('error', errors.array().map(e => e.msg + '</br>').join(''))
-            res.redirect('/users/account')
+            res.redirect('back')
         } else {
             try {
-                await User.update({ _id: req.query.id.trim()}, req.body.userFirst, req.body.userLast, req.body.userPhone)
-                await User.save()
+                req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, {
+                    name: {
+                        first: req.body.first,
+                        last: req.body.last,
+                    },
+                    phone: req.body.phone }, { new: true })
                 req.flash('success', 'Account updated successfully.')
                 res.redirect('/users/account')
             } catch (error) {
                 console.log(`Error saving user: ${error.message}`)
-                req.flash('error', 'That email already exists. Please use a different email.')
+                req.flash('error', 'Failed to update account. Please try again.')
                 res.redirect('/users/account')
             }
         }
@@ -112,8 +116,10 @@ exports.userController = {
                 res.render('users/change_password', {
                     title: 'Change Password',
                     userId: req.user.id,
-                    userFirst: user.password,
-                    userLast: user.newPassword,
+                    userFirst: user.name.first,
+                    userLast: user.name.last,
+                    userPhone: user.phone,
+                    userEmail: user.email,
                     layout: 'layout',
                     styles: ['/assets/stylesheets/stylesheet.css', '/assets/stylesheets/style.css', '/assets/vendor/bootstrap/css/bootstrap.min.css']
                 })
@@ -127,16 +133,22 @@ exports.userController = {
     },
 
     changePassword: async (req, res, next) => {
-        if (req.isAuthenticated()) {
-            try {
-                await User.findOne({ _id: req.user.id.trim()})
-                User.changePassword(req.body.password, req.body.newPassword)
-            } catch (err) {
-                next(err)
-            }
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            req.flash('error', errors.array().map(e => e.msg + '</br>').join(''))
+            res.redirect('back')
         } else {
-            req.flash('error', 'You must log in to access this page.')
-            res.redirect('/users/login')
+            try {
+                req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, {
+                    password: req.body.password }, { new: true })
+                await User.changePassword(req.body.password, req.body.newPassword)
+                req.flash('success', 'Password changed successfully.')
+                res.redirect('/users/account')
+            } catch (error) {
+                console.log(`Error saving user: ${error.message}`)
+                req.flash('error', 'Failed to change password. Please try again.')
+                res.redirect('/users/account')
+            }
         }
     }
 }
@@ -165,4 +177,23 @@ exports.registerValidations = [
         .isLength({min: 10}).withMessage('Password must be at least 10 characters'),
     body('email').isEmail().normalizeEmail().withMessage('Email is not valid'),
     body('phone').isMobilePhone(['en-US']).withMessage('Phone number is not valid')
+]
+
+exports.editValidations = [
+    body('first')
+        .notEmpty().withMessage('First name is required')
+        .isLength({min: 2}).withMessage('First name must be at least 2 characters long'),
+    body('last')
+        .notEmpty().withMessage('Last name is required')
+        .isLength({min: 2}).withMessage('Last name must be at least 2 characters long'),
+    body('phone').isMobilePhone(['en-US']).withMessage('Phone number is not valid')
+]
+
+exports.passwordValidations = [
+    body('password')
+        .notEmpty().withMessage('Password is required')
+        .isLength({min: 10}).withMessage('Password must be at least 10 characters'),
+    body('newPassword')
+        .notEmpty().withMessage('New password is required')
+        .isLength({min: 10}).withMessage('New password must be at least 10 characters')
 ]

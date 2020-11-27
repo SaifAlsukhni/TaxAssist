@@ -24,12 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5a08ec3e-46af-40a6-904f-6885df5a3c02" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/controllers/taxes-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/controllers/taxes-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/routes/taxes.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/routes/taxes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/views/taxes/add_tax.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/taxes/add_tax.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/views/taxes/edit_tax.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/taxes/edit_tax.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/views/taxes/view_all.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/taxes/view_all.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/views/taxes/view_tax.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/taxes/view_tax.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/controllers/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/views/users/account.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/users/account.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/views/users/edit_account.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/users/edit_account.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +133,7 @@
       <workItem from="1606278786689" duration="17194000" />
       <workItem from="1606343917255" duration="20992000" />
       <workItem from="1606388435162" duration="6000" />
-      <workItem from="1606447786281" duration="10068000" />
+      <workItem from="1606447786281" duration="22124000" />
     </task>
     <servers />
   </component>
@@ -175,22 +173,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605155065445" />
-    <state width="1515" height="146" key="GridCell.Tab.0.bottom" timestamp="1606455531647">
+    <state width="1515" height="146" key="GridCell.Tab.0.bottom" timestamp="1606463436263">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606455531647" />
-    <state width="1515" height="146" key="GridCell.Tab.0.center" timestamp="1606455531647">
+    <state width="1515" height="146" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
+    <state width="1515" height="146" key="GridCell.Tab.0.center" timestamp="1606463436263">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606455531647" />
-    <state width="1515" height="146" key="GridCell.Tab.0.left" timestamp="1606455531647">
+    <state width="1515" height="146" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
+    <state width="1515" height="146" key="GridCell.Tab.0.left" timestamp="1606463436263">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606455531647" />
-    <state width="1515" height="146" key="GridCell.Tab.0.right" timestamp="1606455531647">
+    <state width="1515" height="146" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
+    <state width="1515" height="146" key="GridCell.Tab.0.right" timestamp="1606463436263">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606455531647" />
+    <state width="1515" height="146" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602709869379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
