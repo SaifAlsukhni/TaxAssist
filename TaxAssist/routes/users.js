@@ -47,8 +47,8 @@ router.get('/changePassword', async (req, res, next) => {
     await userController.changePasswordView(req, res, next)
 })
 
-router.post('/changePassword', passwordValidations, async (req, res, next) => {
-    await userController.changePassword(req, res, next)
+router.post('/passwordChange', passwordValidations, async (req, res, next) => {
+    await userController.passwordChange(req, res, next)
 })
 
 module.exports = router

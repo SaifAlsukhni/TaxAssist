@@ -26,8 +26,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaxAssist/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/controllers/user-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaxAssist/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/views/users/account.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/users/account.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaxAssist/views/users/edit_account.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/users/edit_account.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaxAssist/views/users/change_password.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/TaxAssist/views/users/change_password.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +132,8 @@
       <workItem from="1606278786689" duration="17194000" />
       <workItem from="1606343917255" duration="20992000" />
       <workItem from="1606388435162" duration="6000" />
-      <workItem from="1606447786281" duration="22124000" />
+      <workItem from="1606447786281" duration="22463000" />
+      <workItem from="1606548126540" duration="8972000" />
     </task>
     <servers />
   </component>
@@ -173,26 +173,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605155065445" />
-    <state width="1515" height="146" key="GridCell.Tab.0.bottom" timestamp="1606463436263">
+    <state width="1515" height="146" key="GridCell.Tab.0.bottom" timestamp="1606557908194">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
-    <state width="1515" height="146" key="GridCell.Tab.0.center" timestamp="1606463436263">
+    <state width="1515" height="146" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606557908194" />
+    <state width="1515" height="146" key="GridCell.Tab.0.center" timestamp="1606557908194">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
-    <state width="1515" height="146" key="GridCell.Tab.0.left" timestamp="1606463436263">
+    <state width="1515" height="146" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606557908194" />
+    <state width="1515" height="146" key="GridCell.Tab.0.left" timestamp="1606557908194">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
-    <state width="1515" height="146" key="GridCell.Tab.0.right" timestamp="1606463436263">
+    <state width="1515" height="146" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606557908194" />
+    <state width="1515" height="146" key="GridCell.Tab.0.right" timestamp="1606557908194">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="146" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606463436263" />
+    <state width="1515" height="146" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606557908194" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1602709869379">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1602709869379" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606557466964">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606557466964" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1606384938684">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

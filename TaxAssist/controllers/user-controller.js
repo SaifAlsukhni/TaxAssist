@@ -34,7 +34,7 @@ exports.userController = {
             req.logIn(user,  function (err) {
                 if (err)
                     return next(err)
-                req.flash('success', `${user.fullName} logged in`)
+                req.flash('success', `${user.fullName} logged in!`)
                 return res.redirect('/')
             })
         })(req, res, next);
@@ -132,18 +132,19 @@ exports.userController = {
         }
     },
 
-    changePassword: async (req, res, next) => {
+    passwordChange: async (req, res, next) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             req.flash('error', errors.array().map(e => e.msg + '</br>').join(''))
             res.redirect('back')
         } else {
             try {
-                req.user = await User.findByIdAndUpdate({_id: req.user.id.trim() }, {
-                    password: req.body.password }, { new: true })
-                await User.changePassword(req.body.password, req.body.newPassword)
-                req.flash('success', 'Password changed successfully.')
-                res.redirect('/users/account')
+                await User.findOne({ _id: req.user.id.trim() }, (err, user, info) => {
+                    user.changePassword(req.body.password, req.body.newPassword, (err, user, info) => {
+                        req.flash('success', 'Password changed successfully.')
+                        res.redirect('/users/account')
+                    })
+                })
             } catch (error) {
                 console.log(`Error saving user: ${error.message}`)
                 req.flash('error', 'Failed to change password. Please try again.')
@@ -190,9 +191,6 @@ exports.editValidations = [
 ]
 
 exports.passwordValidations = [
-    body('password')
-        .notEmpty().withMessage('Password is required')
-        .isLength({min: 10}).withMessage('Password must be at least 10 characters'),
     body('newPassword')
         .notEmpty().withMessage('New password is required')
         .isLength({min: 10}).withMessage('New password must be at least 10 characters')
